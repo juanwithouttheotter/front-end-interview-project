@@ -5,6 +5,7 @@ import styled from "styled-components";
 export async function getStaticProps(context) {
   const res = await fetch("https://api.foxtrotchicago.com/v5/inventory/aisles/224/items?store_id=6");
   const data = await res.json();
+  console.log("hit");
   if (!data) {
     return {
       notFound: true,

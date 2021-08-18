@@ -8,3 +8,4 @@ export { default as Footer } from "./Footer";
 export { default as ProductCard } from "./ProductCard";
 export { default as GroupCard } from "./GroupCard";
 export { default as AisleCard } from "./AisleCard";
+export { default as Breakpoints} from "./Breakpoints";

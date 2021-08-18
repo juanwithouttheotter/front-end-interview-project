@@ -1,6 +1,7 @@
 import { GroupCard } from "..";
 import styled from "styled-components";
 import AislePhoto from "../../public/aisle-photo.svg";
+import Breakpoints from "../Breakpoints";
 
 const AisleTitle = styled.h2`
     display: flex;
@@ -13,6 +14,14 @@ const AisleHeadline = styled.div`
     display flex;
     flex-flow: row no-wrap;
     padding: 2rem;
+
+    @media only screen and ${Breakpoints.tablet}{
+        flex-flow: column wrap;
+    }
+`
+const AislePic = styled(AislePhoto)`
+    height: auto;
+    max-width: 100%;
 `
 const AisleBox = styled.div`
     display: flex;
@@ -26,7 +35,7 @@ const Index = ({ aisle }) => {
     return (
         <AisleBox id={id}>
             <AisleHeadline>
-                <AislePhoto/>
+                <AislePic/>
                 <div>
                 <AisleTitle>{title}</AisleTitle>
                 <div>{description}</div>
