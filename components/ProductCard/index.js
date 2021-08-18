@@ -13,8 +13,9 @@ const PriceBox = styled.div`
 `
 const ProductBox = styled.div`
     dislplay: flex;
+    margin: 0.5rem auto;
     height: 300px;
-    width: 200px;
+    width: 175px;
     text-align: left;
     &:hover {
         cursor: pointer;
@@ -25,19 +26,28 @@ const ProductTitle = styled.div`
     margin: 0;
 `
 
-const Index = ({ id, title, slug, unitPrice, assets, type, appItemType, hasOffers, badge, salePrice, perksPrice }) => {
-    return (
-        <ProductBox key={id} >
-            <Image src={assets[0].url} alt={slug} width={200} height={200} />
+const Index = ({ products }) => {
+    return (products.map((product) => {
+        const {id,title, slug, unitPrice, assets, type, app_item_type, has_offers, badge, sale_price, perks_price } = product;
+        const formatCurrency = (amt) => {
+            return `$${amt.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`
+        }
+
+        return(
+        <ProductBox key={`key-${id}`} id={id} >
+            <Image src={assets[0].url} alt={slug} width={175} height={175} />
             <ProductTitle>{title}</ProductTitle>
             <PriceBox>
-                {(perksPrice || salePrice) ? <PriceTag sale>${perksPrice ? perksPrice : salePrice}</PriceTag> : ""}
-                {(perksPrice || salePrice) ? <PriceTag old>${unitPrice}</PriceTag> : <PriceTag>{unitPrice}</PriceTag>}
+                {(perks_price || sale_price) ? <PriceTag sale>{perks_price ? formatCurrency(perks_price) : formatCurrency(sale_price)}</PriceTag> : ""}
+                {(perks_price || sale_price) ? <PriceTag old>{formatCurrency(unitPrice)}</PriceTag> : <PriceTag>{formatCurrency(unitPrice)}</PriceTag>}
 
             </PriceBox>
 
         </ProductBox>
+        );
+    }
     )
+    );
 }
 
 export default Index;

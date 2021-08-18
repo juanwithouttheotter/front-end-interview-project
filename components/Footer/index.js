@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 const Foot = styled.div`
-height:24px; 
+height: 2.5rem; 
 width: 100%;
+color: white;
 background: #121212;
 background-repeat: repeat;
 background-attachment: scroll;
@@ -15,7 +16,7 @@ left: 0pt;
 const Index = () => {
     return (
         <Foot>
-
+            Footer
         </Foot>
 
     );

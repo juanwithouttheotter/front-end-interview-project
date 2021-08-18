@@ -2,6 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import FoxtrotLogoWhiteLg from "../../public/foxtrot-logo-white-lg.svg";
 
+
 const Nav = styled.nav`
     background-color: #121212;
     overflow: hidden;
@@ -73,12 +74,18 @@ const Index = () => {
 
             <NavLogo>
                 <Link href="/">
-                    <FoxtrotLogoWhiteLg />
+                    <a>
+                        <FoxtrotLogoWhiteLg />
+                    </a>
                 </Link>
             </NavLogo>
 
             <CartIcon>
-                <div>cart</div>
+                <Link href="/stores/cart">
+                    <NavA>
+                        Cart
+                    </NavA>
+                </Link>
             </CartIcon>
         </Nav>
     );
